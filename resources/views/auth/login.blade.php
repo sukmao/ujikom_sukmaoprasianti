@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>APM | Login Admin</title>
+    <title>PANGADU | Login Admin</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,16 +23,17 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>APM</b>Pengaduan</a>
+            <a href="../../index2.html"><b>PANGADU</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
-                <form action="../../index3.html" method="post">
+                <form action="/dashboardadmin" method="post">
+                    @csrf
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" placeholder="Email" name="email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -40,17 +41,24 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Login sebagai</label>
+                        <select class="form-control" name="level">
+                            <option value="admin">Admin</option>
+                            <option value="petugas">Petugas</option>
+                        </select>
+                    </div>
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-12">
-                            <a href="dashboard.html" class="btn btn-outline-secondary btn-block" style="border-radius: 20px;"> <li class="fa fa-sign-in-alt"></li> Sign In</a>
+                            <button type="submit" class="btn btn-outline-secondary btn-block" style="border-radius: 20px;"> <li class="fa fa-sign-in-alt"></li> Sign In</a>
                         </div>
                         <!-- /.col -->
                     </div>

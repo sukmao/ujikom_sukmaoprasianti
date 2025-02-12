@@ -35,6 +35,32 @@ h6 {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
+.boxed-btn3 {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0181f5+0,5db2ff+100 */
+  background: #ffffff;
+  color: #070707;
+  display: inline-block;
+  padding: 14px 27px;
+  font-family:"Raleway";
+  font-size: 16px;
+  border: 2;
+  border: 2px solid #424141;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center;
+
+  color: #050505 !important;
+  text-transform: capitalize;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+  letter-spacing: 2px;
+  }
+
+
 .back-to-top {
   position: fixed;
   visibility: hidden;
@@ -47,6 +73,19 @@ h6 {
   height: 40px;
   border-radius: 4px;
   transition: all 0.4s;
+}
+.register {
+  background-color: #f8c8d2; /* Warna pink muda */
+  padding: 20px; /* Memberikan sedikit ruang pada form */
+  border-radius: 8px; /* Memberikan sudut yang lebih halus */
+}
+
+.register .card {
+  border: none; /* Menyembunyikan border pada card */
+}
+
+.register .form-control {
+  border-radius: 5px; /* Membuat input dan textarea memiliki sudut yang lebih halus */
 }
 
 .back-to-top i {
@@ -1283,7 +1322,7 @@ section {
 
 #footer .footer-top p {
   font-size: 15;
-  font-style: italic;
+
   margin: 30px 0 0 0;
   padding: 0;
 }

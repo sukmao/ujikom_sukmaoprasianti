@@ -14,7 +14,7 @@
 
 
 
-<footer id="footer">
+{{-- <footer id="footer">
     <div class="container footer-bottom clearfix">
       <div class="copyright">
         &copy; Copyright <strong><span>APM</span></strong>. All Rights Reserved
@@ -27,7 +27,7 @@
         Template By <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer><!-- End Footer --> --}}
 
         @include('layoutsmasyarakat.footer')
 
