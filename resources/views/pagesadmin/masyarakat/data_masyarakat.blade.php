@@ -31,42 +31,46 @@
                             <tr>
                                 <th>#</th>
                                 <th>NIK</th>
-                                <th>Nama</th>
+                                <th>Nama lengkap</th>
+                                <th>jenis kelamin</th>
+                                <th>username</th>
+                                <th> no telepon</th>
+                                <th>role</th>
                                 <th>Alamat</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>3207172222000000</td>
-                                <td>Lukman</td>
-                                <td>Bandung</td>
-                                <td>
-                                    <a href="/masyarakat/create/1" class="btn btn-warning btn-xs" title="Edit Masyarakat"><li class="fa fa-edit"></li></a>
-                                    <a href="" class="btn btn-primary btn-xs" title="Detail Masyarakat"><li class="fa fa-list"></li></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>3207172222000000</td>
-                                <td>Fery</td>
-                                <td>Bandung</td>
-                                <td>
-                                    <a href="/masyarakat/create/2" class="btn btn-warning btn-xs" title="Edit Masyarakat"><li class="fa fa-edit"></li></a>
-                                    <a href="" class="btn btn-primary btn-xs" title="Detail Masyarakat"><li class="fa fa-list"></li></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>3207172222000000</td>
-                                <td>Samsu</td>
-                                <td>Bandung</td>
-                                <td>
-                                    <a href="/masyarakat-add.html" class="btn btn-warning btn-xs" title="Edit Masyarakat"><li class="fa fa-edit"></li></a>
-                                    <a href="" class="btn btn-primary btn-xs" title="Detail Masyarakat"><li class="fa fa-list"></li></a>
-                                </td>
-                            </tr>
+                            <tbody>
+                                @php $no = 1; @endphp
+                                @foreach ($masyarakats as $petugas)
+                                    @if ($petugas->role === 'masyarakat')
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $petugas->nik }}</td>
+                                            <td>{{ $petugas->nama_lengkap }}</td>
+                                            <td>{{ $petugas->jenis_kelamin }}</td>
+                                            <td>{{ $petugas->username }}</td>
+                                            <td>{{ $petugas->no_telepon }}</td>
+                                            <td>{{ $petugas->role }}</td>
+                                            <td>{{ $petugas->alamat}}</td>
+                                            @unless(auth()->user()->role == 'petugas' ?? 'admin')
+                                            <td>
+                                                <a href="/edit_masyarakat/{{$petugas->id}}" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="javascript:void(0);" class="btn btn-danger"
+                                                    data-toggle="tooltip"
+                                                    data-placement="top"
+                                                    title="Hapus"
+                                                    onclick="confirmDeletion({{ $petugas->id }});">
+                                                    <i class="fa fa-close color-danger">Hapus</i>
+                                                </a>
+                                            </td>
+                                            @endunless
+                                        </tr>
+                                    @endif   
+                                @endforeach
+                            </tbody>
+                            
                         </tbody>
                     </table>
                 </div>
