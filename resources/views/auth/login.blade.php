@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>PANGADU | Login Admin</title>
+    <title>APM | Login Admin</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,46 +23,51 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>PANGADU</b></a>
+            <a href="../../index2.html"><b>APM</b>Pengaduan</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
-                <form action="/dashboardadmin" method="post">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Login sebagai</label>
-                        <select class="form-control" name="level">
-                            <option value="admin">Admin</option>
-                            <option value="petugas">Petugas</option>
-                        </select>
-                    </div>
-                    <div class="row">
-                        <!-- /.col -->
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-outline-secondary btn-block" style="border-radius: 20px;"> <li class="fa fa-sign-in-alt"></li> Sign In</a>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
+                <form action="/store/login" method="post" class="mt-4">
+                @csrf
+                <!-- Username Input -->
+                <div class="form-group mb-3">
+                    <label for="username"><strong>Username</strong></label>
+                    <input
+                        name="username"
+                        type="text"
+                        class="form-control @error('username') is-invalid @enderror"
+                        id="username"
+                        placeholder="Masukkan Username Anda"
+                        value="{{ old('username') }}"
+                    >
+                    @error('username')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Password Input -->
+                <div class="form-group mb-3">
+                    <label for="password"><strong>Password</strong></label>
+                    <input
+                        name="password"
+                        type="password"
+                        class="form-control @error('password') is-invalid @enderror"
+                        id="password"
+                        placeholder="Masukkan Password Anda"
+                    >
+                    @error('password')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block mt-2">LOGIN</button>
+                </div>
+            </form>
             </div>
             <!-- /.login-card-body -->
         </div>

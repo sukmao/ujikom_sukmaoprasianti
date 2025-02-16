@@ -76,20 +76,79 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>nama masayrakat</th>
+                                                <th>kategori</th>
                                                 <th>Tgl Pengaduan</th>
-                                                <th>Judul Pengaduan</th>
+                                                <th>isi Pengaduan</th>
+                                                <th>foto</th>
+                                                <th>status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>12-12-2022</td>
-                                                <td>Limbah Pabrik ABCD</td>
-                                                <td><button class="btn btn-primary btn-xs">
-                                                        <li class="fa fa-list"></li>
-                                                    </button> </td>
+                                            @php $no = 1; @endphp
+                                            @foreach ($pengaduans as $index => $pengaduan)
+                                                <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                    <td>{{ $pengaduan->masyarakat->nama_lengkap ?? 'Tidak Ada Data' }}</td>
+                                                    <td>{{ $pengaduan->kategori->nama_kategori ?? 'Tidak Ada Data' }}</td>
+                                                    <td>{{ $pengaduan->tanggal_pengaduan }}</td>
+                                                    <td>{{ $pengaduan->isi_pengaduan }}</td>
+
+                                                    <td>
+                                                        @if ($pengaduan->foto)
+                                                            <img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" width="50">
+                                                        @else
+                                                            Tidak ada foto
+                                                        @endif
+                                                    </td>
+
+                                                    <td>
+                                                    @if(in_array($pengaduan->status, ['selesai', 'ditolak']))
+                                                        @if($pengaduan->status == 'ditolak' && auth()->user()->role == 'admin')
+                                                            <a href="/tambah_tanggapan/{{$pengaduan->id}}">
+                                                                <span class="badge bg-danger">
+                                                                    {{ ucfirst($pengaduan->status) }}
+                                                                </span>
+                                                            </a>
+                                                        @else
+                                                            <span class="badge {{ $pengaduan->status == 'selesai' ? 'bg-success' : 'bg-danger' }}">
+                                                                {{ ucfirst($pengaduan->status) }}
+                                                            </span>
+                                                        @endif
+                                                    @elseif($pengaduan->status == 'diproses' && auth()->user()->role == 'admin')
+                                                        <a href="/tambah_tanggapan/{{$pengaduan->id}}">
+                                                            <span class="badge bg-warning">
+                                                                {{ ucfirst($pengaduan->status) }}
+                                                            </span>
+                                                        </a>
+                                                    @else
+                                                        {{-- Default status tanpa respons --}}
+                                                        <a href="/tambah_tanggapan/{{$pengaduan->id}}">
+                                                            <span class="badge bg-warning">
+                                                                belum ada respon
+                                                            </span>
+                                                        </a>
+
+                                                    @endif
+                                                    </td>
+                                                    @unless(auth()->user()->role == 'petugas')
+                                                    <td>
+                                                        <!-- Tombol Edit -->
+                                                        {{-- <a href="/edit_laporan/{{ $pengaduan->id }}" class="btn btn-sm btn-warning mt-1">E</a> --}}
+                                                
+                                                        <!-- Form Penghapusan -->
+                                                        <form id="delete-form-{{ $pengaduan->id }}" action="{{ route('destroy_pengaduan', $pengaduan->id) }}" method="POST" style="display:inline-block;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeletion({{ $pengaduan->id }})">
+                                                                Hapus
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                @endunless
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
