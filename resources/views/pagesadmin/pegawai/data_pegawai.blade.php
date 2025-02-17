@@ -17,13 +17,13 @@
     setTimeout(function() {
         let successAlert = document.getElementById('alert-success');
         let errorAlert = document.getElementById('alert-error');
-        
+
         if (successAlert) {
             successAlert.style.transition = "opacity 0.5s";
             successAlert.style.opacity = "0";
             setTimeout(() => successAlert.remove(), 500);
         }
-        
+
         if (errorAlert) {
             errorAlert.style.transition = "opacity 0.5s";
             errorAlert.style.opacity = "0";
@@ -62,6 +62,7 @@
                             </div>
                             <div class="card-body" style="background-color: #efc6c6;">
                                 <div class="card">
+                                    <div>
                                     <table id="example1" class="table table-bordered table-striped" >
                                         <thead>
                                             <tr>
@@ -106,10 +107,11 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
