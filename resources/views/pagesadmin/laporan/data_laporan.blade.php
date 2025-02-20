@@ -19,7 +19,7 @@
 <section class="content">
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" style="background-color: #efc6c6;">
                 <div class="card-header">
                     <h3 class="card-title">Data Laporan Masuk</h3>
                 </div>
@@ -103,9 +103,9 @@
 
 
                                                         </td>
-                                                        
+
                                                         <td >
-                                                            
+
                                                             @unless(auth()->user()->role == 'petugas')
                                                             <!-- Link Penghapusan -->
                                                             <form id="delete-form-{{ $pengaduan->id }}" action="{{ route('destroy_pengaduan', $pengaduan->id) }}" method="POST" style="display:inline-block;">
