@@ -18,8 +18,8 @@
     </section>
 <section class="content">
     <div class="row">
-        <div class="col-12">
-            <div class="card">
+        <div class="col-12" >
+            <div class="card" style="background-color: #efc6c6;">
                 <div class="card-header">
                     <h3 class="card-title">Data Masyarakat</h3>
                     <a href="/masyarakat/create" class="btn float-right btn-outline-secondary btn-md"><li class="fa fa-plus"></li> Add Data Masyarakat</a>
@@ -67,10 +67,10 @@
                                             </td>
                                             @endunless
                                         </tr>
-                                    @endif   
+                                    @endif
                                 @endforeach
                             </tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>

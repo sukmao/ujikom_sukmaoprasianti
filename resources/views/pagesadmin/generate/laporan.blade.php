@@ -2,7 +2,7 @@
 @section('contentadmin')
 
 <div class="col-md-12">
-    <div class="card">
+    <div class="card" style="background-color: #efc6c6;">
         <div>
             <h3 class="p-2">Generate Laporan Pengaduan Masyarakat</h3>
         </div>
@@ -72,7 +72,7 @@
                         @endforelse
                     </tbody>
                 </table>
-                
+
             </div>
         </div>
     </div>

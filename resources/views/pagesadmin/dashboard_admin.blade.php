@@ -27,7 +27,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Masyarakat</span>
                                     <span class="info-box-number">
-                                        10
+                                        {{$jumlahMasyarakat}}
                                     </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -42,7 +42,21 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Laporan Pengaduan</span>
                                     <span class="info-box-number">
-                                        1.000
+                                        {{$jumlahKategori}}
+                                    </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-green elevation-1"><i class="fa fa-envelope"></i></span>
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Laporan </span>
+                                    <span class="info-box-number">
+                                        {{$jumlahLaporan}}
                                     </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -56,7 +70,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Laporan Baru</span>
                                     <span class="info-box-number">
-                                        200
+                                        {{$jumlahLaporanBaru}}
                                     </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -67,7 +81,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card">
+                            <div class="card" style="background-color: #efc6c6;">
                                 <div class="card-header">
                                     Data Laporan Masuk
                                 </div>
@@ -136,7 +150,7 @@
                                                     <td>
                                                         <!-- Tombol Edit -->
                                                         {{-- <a href="/edit_laporan/{{ $pengaduan->id }}" class="btn btn-sm btn-warning mt-1">E</a> --}}
-                                                
+
                                                         <!-- Form Penghapusan -->
                                                         <form id="delete-form-{{ $pengaduan->id }}" action="{{ route('destroy_pengaduan', $pengaduan->id) }}" method="POST" style="display:inline-block;">
                                                             @csrf

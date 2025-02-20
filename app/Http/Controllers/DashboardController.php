@@ -16,7 +16,6 @@ class DashboardController extends Controller
     $jumlahLaporan = Pengaduan::count();
     $jumlahLaporanBaru = Pengaduan::where('status', '0')->count();
     $jumlahLaporanSelesai = Pengaduan::where('status', 'selesai')->count();
-
     // Ambil data pengaduan dengan pagination
     $pengaduans = Pengaduan::paginate(3);
 
